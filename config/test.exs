@@ -21,4 +21,3 @@ config :tesla, adapter: Tesla.Mock
 
 config :assignment,
   dark_sky_key: "test_key"
-  
