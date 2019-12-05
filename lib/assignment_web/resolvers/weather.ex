@@ -1,7 +1,10 @@
 defmodule AssignmentWeb.Resolvers.Weather do
+  alias Assignment.Weather.Forecast
+  alias AssignmentWeb.ForecastView
 
   def forecast(_parent, %{input: %{latitude: latitude, longitude: longitude}}, _resolution) do
-    #TODO: implement resolver
-    {:error, :not_implemented}
+    with {:ok, forecast} <- Forecast.currently_and_daily(latitude, longitude) do
+      {:ok, ForecastView.render("forecast", %{forecast: forecast})}
+    end
   end
 end
