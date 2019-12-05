@@ -4,34 +4,25 @@ defmodule Assignment.Weather.ForecastTest do
 
   describe "process" do
     test "successful response" do
-      map_body = %{"key" => "value"}
-      {:ok, string_body} = Jason.encode(map_body)
-
-      Tesla.Mock.mock fn _ -> {200, %{}, string_body} end
+      body = File.read!("test/support/fixtures/dark_sky/success_body.json")
+             |> Jason.decode!
+      Tesla.Mock.mock fn _ -> {200, %{}, body} end
 
       assert {:ok, forecast} = Forecast.currently_and_daily("1", "1")
-      assert forecast == map_body
+      assert forecast == body
     end
 
     test "error response" do
-      error_msg = "Poorly formatted request"
-      map_body = %{"error" => error_msg}
-      {:ok, string_body} = Jason.encode(map_body)
-
-      Tesla.Mock.mock fn _ -> {400, %{}, string_body} end
+      body = File.read!("test/support/fixtures/dark_sky/error_body.json")
+             |> Jason.decode!
+      Tesla.Mock.mock fn _ -> {400, %{}, body} end
 
       assert {:error, error_msg} = Forecast.currently_and_daily("1", "1")
+      assert error_msg == body["error"]
     end
 
     test "no response" do
       Tesla.Mock.mock fn _ -> {:error, :econnrefused} end
-
-      assert {:error, _error_msg} = Forecast.currently_and_daily("1", "1")
-    end
-
-    test "malformed response" do
-      string_body = "invalid_json::15"
-      Tesla.Mock.mock fn _ -> {200, %{}, string_body} end
 
       assert {:error, _error_msg} = Forecast.currently_and_daily("1", "1")
     end
