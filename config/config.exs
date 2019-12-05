@@ -29,4 +29,4 @@ config :phoenix, :json_library, Jason
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
 
-config :assignment, dark_sky_key: System.get_env("DARK_SKY_KEY")
+config :assignment, dark_sky_url: "https://api.darksky.net/forecast"

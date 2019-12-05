@@ -6,8 +6,9 @@ defmodule Assignment.DarkSky.Client do
   @type result :: Tesla.Env.result()
 
   @key Application.fetch_env!(:assignment, :dark_sky_key)
+  @base_url Application.fetch_env!(:assignment, :dark_sky_url)
 
-  plug Tesla.Middleware.BaseUrl, "https://api.darksky.net/forecast/#{@key}/"
+  plug Tesla.Middleware.BaseUrl, @base_url <> "/" <> @key <> "/"
 
   @spec forecast(coordinate, coordinate, query_params) :: result
   def forecast(latitude, longitude, query_params \\ []) do
