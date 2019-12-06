@@ -39,6 +39,8 @@ defmodule AssignmentWeb do
       import AssignmentWeb.ErrorHelpers
       import AssignmentWeb.Gettext
       alias AssignmentWeb.Router.Helpers, as: Routes
+
+      import AssignmentWeb.ViewHelper
     end
   end
 

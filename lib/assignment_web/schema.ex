@@ -7,6 +7,7 @@ defmodule AssignmentWeb.Schema do
   alias AssignmentWeb.Resolvers
 
   query do
+    @desc "Get weather forecast"
     field :weather_forecast, :forecast do
       arg :input, non_null(:coordinate_input)
       resolve &Resolvers.Weather.forecast/3

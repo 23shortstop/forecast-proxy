@@ -29,7 +29,7 @@ defmodule AssignmentWeb.Schema.WeatherTypes do
   end
 
   input_object :coordinate_input do
-    field :latitude, non_null(:string)
-    field :longitude, non_null(:string)
+    field :latitude, non_null(:decimal)
+    field :longitude, non_null(:decimal)
   end
 end

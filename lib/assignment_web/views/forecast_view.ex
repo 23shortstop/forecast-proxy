@@ -1,6 +1,7 @@
 defmodule AssignmentWeb.ForecastView do
+  use AssignmentWeb, :view
 
-  def render("forecast", %{forecast: forecast}) do
+  def render("forecast.json", %{forecast: forecast}) do
     %{ date: render_date(forecast["currently"]["time"]),
        type: forecast["currently"]["precipType"],
        description: forecast["currently"]["summary"],
@@ -10,22 +11,7 @@ defmodule AssignmentWeb.ForecastView do
          bearing: forecast["currently"]["windBearing"]
        },
        precipitation_probability: forecast["currently"]["precipProbability"],
-       daily: forecast["daily"]["data"] |> Enum.map(&render_daily/1)
+       daily: render_many(forecast["daily"]["data"], AssignmentWeb.DailyView, "daily.json")
      }
-  end
-
-  defp render_daily(daily) do
-    %{ date: render_date(daily["time"]),
-       type: daily["precipType"],
-       description: daily["summary"],
-       temperature: %{
-         low: daily["temperatureMin"],
-         high: daily["temperatureMax"]
-       }
-     }
-  end
-
-  defp render_date(unix) do
-    DateTime.from_unix!(unix)
   end
 end

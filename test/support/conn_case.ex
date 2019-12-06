@@ -22,6 +22,7 @@ defmodule AssignmentWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       alias AssignmentWeb.Router.Helpers, as: Routes
+      import Assignment.DarkSky.TestHelper
 
       # The default endpoint for testing
       @endpoint AssignmentWeb.Endpoint
@@ -29,7 +30,7 @@ defmodule AssignmentWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Assignment.Repo)
+    # :ok = Ecto.Adapters.SQL.Sandbox.checkout(Assignment.Repo)
 
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Assignment.Repo, {:shared, self()})
