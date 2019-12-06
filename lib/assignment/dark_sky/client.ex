@@ -10,8 +10,8 @@ defmodule Assignment.DarkSky.Client do
   plug Tesla.Middleware.BaseUrl, @base_url <> "/" <> @key <> "/"
   plug Tesla.Middleware.DecodeJson
 
-  @spec forecast(String.t(), String.t(), query_params) :: result
+  @spec forecast(%Decimal{}, %Decimal{}, query_params) :: result
   def forecast(latitude, longitude, query_params \\ []) do
-    get(latitude <> "," <> longitude, query: query_params)
+    get("#{latitude},#{longitude}", query: query_params)
   end
 end
