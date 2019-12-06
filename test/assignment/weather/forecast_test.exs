@@ -22,7 +22,7 @@ defmodule Assignment.Weather.ForecastTest do
 
   describe "no response" do
     setup do
-      Tesla.Mock.mock fn _ -> {:error, :econnrefused} end
+      Tesla.Mock.mock(fn _ -> {:error, :econnrefused} end)
       :ok
     end
 
