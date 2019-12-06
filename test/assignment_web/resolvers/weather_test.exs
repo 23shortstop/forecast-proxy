@@ -31,15 +31,19 @@ defmodule AssignmentWeb.Resolvers.WeatherTest do
     setup [:dark_sky_success_mock]
 
     test "request", %{mock: mock_body} do
-      res = build_conn()
-            |> post("/graphiql", %{query: @query, variables: %{input: @input}})
-            |> json_response(200)
+      res =
+        build_conn()
+        |> post("/graphiql", %{query: @query, variables: %{input: @input}})
+        |> json_response(200)
 
       assert %{"data" => %{"weatherForecast" => forecast}} = res
       assert forecast["temperature"] == mock_body["currently"]["temperature"]
-      assert forecast["date"] == mock_body["currently"]["time"]
-                                 |> DateTime.from_unix!
-                                 |> Date.to_iso8601
+
+      assert forecast["date"] ==
+               mock_body["currently"]["time"]
+               |> DateTime.from_unix!()
+               |> Date.to_iso8601()
+
       assert forecast["description"] == mock_body["currently"]["summary"]
       assert forecast["precipitationProbability"] == mock_body["currently"]["precipProbability"]
       assert forecast["type"] == mock_body["currently"]["precipType"]
@@ -48,9 +52,11 @@ defmodule AssignmentWeb.Resolvers.WeatherTest do
 
       Enum.zip(forecast["daily"], mock_body["daily"]["data"])
       |> Enum.each(fn {daily_res, daily_mock} ->
-        assert daily_res["date"] == daily_mock["time"]
-                                    |> DateTime.from_unix!
-                                    |> Date.to_iso8601
+        assert daily_res["date"] ==
+                 daily_mock["time"]
+                 |> DateTime.from_unix!()
+                 |> Date.to_iso8601()
+
         assert daily_res["description"] == daily_mock["summary"]
         assert daily_res["type"] == daily_mock["precipType"]
         assert daily_res["temperature"]["high"] == daily_mock["temperatureHigh"]
@@ -63,9 +69,10 @@ defmodule AssignmentWeb.Resolvers.WeatherTest do
     setup [:dark_sky_error_mock]
 
     test "request", %{mock: mock_body} do
-      res = build_conn()
-            |> post("/graphiql", %{query: @query, variables: %{input: @input}})
-            |> json_response(200)
+      res =
+        build_conn()
+        |> post("/graphiql", %{query: @query, variables: %{input: @input}})
+        |> json_response(200)
 
       assert %{"errors" => [error]} = res
       assert error["message"] == mock_body["error"]

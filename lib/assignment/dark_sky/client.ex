@@ -1,7 +1,12 @@
 defmodule Assignment.DarkSky.Client do
   use Tesla
 
-  @type query_params :: [exclude: String.t, extend: String.t, lang: String.t, units: String.t]
+  @type query_params :: [
+          exclude: String.t(),
+          extend: String.t(),
+          lang: String.t(),
+          units: String.t()
+        ]
   @type result :: Tesla.Env.result()
 
   @key Application.fetch_env!(:assignment, :dark_sky_key)

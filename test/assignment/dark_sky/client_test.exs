@@ -6,7 +6,7 @@ defmodule Assignment.DarkSky.ClientTest do
   @test_key Application.fetch_env!(:assignment, :dark_sky_key)
 
   setup do
-    Tesla.Mock.mock fn env -> env end
+    Tesla.Mock.mock(fn env -> env end)
 
     :ok
   end
