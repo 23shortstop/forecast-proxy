@@ -19,8 +19,8 @@ defmodule AssignmentWeb.ForecastView do
        type: daily["precipType"],
        description: daily["summary"],
        temperature: %{
-         low: daily["temperatureMin"],
-         high: daily["temperatureMax"]
+         low: daily["temperatureLow"],
+         high: daily["temperatureHigh"]
        }
      }
   end
