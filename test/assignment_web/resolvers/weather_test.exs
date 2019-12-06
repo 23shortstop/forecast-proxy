@@ -27,12 +27,10 @@ defmodule AssignmentWeb.Resolvers.WeatherTest do
     }
   """
 
-  describe "forecast" do
-    test "success" do
-      mock_body = File.read!("test/support/fixtures/dark_sky/success_body.json")
-                  |> Jason.decode!
-      Tesla.Mock.mock fn _ -> {200, %{}, mock_body} end
+  describe "success forecast" do
+    setup [:dark_sky_success_mock]
 
+    test "request", %{mock: mock_body} do
       res = build_conn()
             |> post("/graphiql", %{query: @query, variables: %{input: @input}})
             |> json_response(200)
@@ -59,12 +57,12 @@ defmodule AssignmentWeb.Resolvers.WeatherTest do
         assert daily_res["temperature"]["low"] == daily_mock["temperatureLow"]
       end)
     end
+  end
 
-    test "error" do
-      mock_body = File.read!("test/support/fixtures/dark_sky/error_body.json")
-                  |> Jason.decode!
-      Tesla.Mock.mock fn _ -> {400, %{}, mock_body} end
+  describe "error forecast" do
+    setup [:dark_sky_error_mock]
 
+    test "request", %{mock: mock_body} do
       res = build_conn()
             |> post("/graphiql", %{query: @query, variables: %{input: @input}})
             |> json_response(200)

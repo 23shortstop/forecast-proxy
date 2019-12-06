@@ -1,29 +1,32 @@
 defmodule Assignment.Weather.ForecastTest do
-  use ExUnit.Case
+  use AssignmentWeb.ConnCase, async: true
   alias Assignment.Weather.Forecast
 
-  describe "process" do
-    test "successful response" do
-      body = File.read!("test/support/fixtures/dark_sky/success_body.json")
-             |> Jason.decode!
-      Tesla.Mock.mock fn _ -> {200, %{}, body} end
+  describe "successful response" do
+    setup [:dark_sky_success_mock]
 
+    test "process", %{mock: body} do
       assert {:ok, forecast} = Forecast.currently_and_daily("1", "1")
       assert forecast == body
     end
+  end
 
-    test "error response" do
-      body = File.read!("test/support/fixtures/dark_sky/error_body.json")
-             |> Jason.decode!
-      Tesla.Mock.mock fn _ -> {400, %{}, body} end
+  describe "error response" do
+    setup [:dark_sky_error_mock]
 
+    test "process", %{mock: body} do
       assert {:error, error_msg} = Forecast.currently_and_daily("1", "1")
       assert error_msg == body["error"]
     end
+  end
 
-    test "no response" do
+  describe "no response" do
+    setup do
       Tesla.Mock.mock fn _ -> {:error, :econnrefused} end
+      :ok
+    end
 
+    test "process" do
       assert {:error, _error_msg} = Forecast.currently_and_daily("1", "1")
     end
   end

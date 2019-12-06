@@ -22,6 +22,7 @@ defmodule AssignmentWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       alias AssignmentWeb.Router.Helpers, as: Routes
+      import Assignment.DarkSky.TestHelper
 
       # The default endpoint for testing
       @endpoint AssignmentWeb.Endpoint
