@@ -10,7 +10,7 @@ defmodule AssignmentWeb.Schema do
     @desc "Get weather forecast"
     field :weather_forecast, :forecast do
       arg(:input, non_null(:coordinate_input))
-      resolve(&Resolvers.Weather.forecast/3)
+      resolve(&Resolvers.Weather.forecast/2)
     end
   end
 end
