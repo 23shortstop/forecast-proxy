@@ -11,7 +11,8 @@ defmodule Assignment.Application do
       # Start the Ecto repository
       # Assignment.Repo,
       # Start the endpoint when the application starts
-      AssignmentWeb.Endpoint
+      AssignmentWeb.Endpoint,
+      Assignment.CacheServer
       # Starts a worker by calling: Assignment.Worker.start_link(arg)
       # {Assignment.Worker, arg},
     ]
