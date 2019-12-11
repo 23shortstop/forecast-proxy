@@ -3,19 +3,18 @@ defmodule Assignment.CacheServer do
 
   alias Assignment.Weather.Forecast
 
-  # one hour
-  @caching_time 60 * 60 * 1000
+  @caching_time Application.fetch_env!(:assignment, :caching_time)
 
   def start_link(_) do
-    GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
+    GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
   end
 
   def get_forecast(coordinates) do
     GenServer.call(__MODULE__, {:get, coordinates})
   end
 
-  def init(:ok) do
-    {:ok, %{}}
+  def init(initial_cache) do
+    {:ok, initial_cache}
   end
 
   def handle_call({:get, coordinates}, _from, cache) do

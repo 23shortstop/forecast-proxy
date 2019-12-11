@@ -57,4 +57,5 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 config :assignment,
-  dark_sky_key: System.get_env("DARK_SKY_KEY")
+  dark_sky_key: System.get_env("DARK_SKY_KEY"),
+  caching_time: 60 * 1000
