@@ -18,5 +18,18 @@ defmodule Assignment.DarkSky.Client do
   @spec forecast(%Decimal{}, %Decimal{}, query_params) :: result
   def forecast(latitude, longitude, query_params \\ []) do
     get("#{latitude},#{longitude}", query: query_params)
+    |> process_response
+  end
+
+  defp process_response({:ok, %{body: body, status: 200}}) do
+    {:ok, body}
+  end
+
+  defp process_response({:ok, %{body: %{"error" => error}}}) do
+    {:error, error}
+  end
+
+  defp process_response(_error) do
+    {:error, "Unable to receive forecast"}
   end
 end
