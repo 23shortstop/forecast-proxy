@@ -20,4 +20,5 @@ config :logger, level: :warn
 config :tesla, adapter: Tesla.Mock
 
 config :assignment,
-  dark_sky_key: "test_key"
+  dark_sky_key: "test_key",
+  caching_time: 1000

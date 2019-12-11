@@ -55,4 +55,5 @@ config :logger, level: :info
 import_config "prod.secret.exs"
 
 config :assignment,
-  dark_sky_key: System.get_env("DARK_SKY_KEY")
+  dark_sky_key: System.get_env("DARK_SKY_KEY"),
+  caching_time: 60 * 60 * 1000

@@ -1,7 +1,8 @@
 defmodule AssignmentWeb.Resolvers.WeatherTest do
-  use AssignmentWeb.ConnCase, async: true
+  use AssignmentWeb.ConnCase, async: false
 
   @input %{latitude: "52.3667", longitude: "4.8945"}
+  @error_input %{latitude: "99999999", longitude: "99999999"}
   @query """
     query WeatherForecast($input: CoordinateInput!) {
       weatherForecast(input: $input) {
@@ -71,7 +72,7 @@ defmodule AssignmentWeb.Resolvers.WeatherTest do
     test "request", %{mock: mock_body} do
       res =
         build_conn()
-        |> post("/graphiql", %{query: @query, variables: %{input: @input}})
+        |> post("/graphiql", %{query: @query, variables: %{input: @error_input}})
         |> json_response(200)
 
       assert %{"errors" => [error]} = res
