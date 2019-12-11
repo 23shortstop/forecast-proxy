@@ -20,7 +20,7 @@ defmodule Assignment.DarkSky.ClientTest do
 
   describe "forecast" do
     test "sends correct request" do
-      assert {:ok, _} = Client.forecast(@latitude, @longitude, @query)
+      assert {:ok, _} = Client.forecast({@latitude, @longitude}, @query)
     end
   end
 end
