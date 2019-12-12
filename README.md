@@ -1,30 +1,18 @@
 # ForecastProxy
 
-We're looking to add weather information for sales prediction and dynamic pricing.
+Proxy server which provides GraphQL wrapper around [Dark Sky](https://darksky.net/dev) REST API.
 
-Since we're using GraphQL as our main interface for internal communication, we
-have to build a small proxy service to translate REST to GraphQL. We use Absinthe
-within Elixir to build GraphQL APIs.
+## Libraries used
 
-## Setup
+- [Phoenix](https://phoenixframework.org) as main framework.
+- [Absinthe](https://hexdocs.pm/absinthe) for GraphQL API implementation.
+- [Tesla](https://hexdocs.pm/tesla) to send REST requests.
+- [GenServer](https://hexdocs.pm/elixir/GenServer.html) to implement caching.
+- [ExUnit](https://hexdocs.pm/ex_unit) as testing framework.
 
-- [Phoenix](https://phoenixframework.org) has been set up and is available to run the application server.\
-  Ecto has been disabled, as you won't need a database for this service, but can be enabled later if needed.
-- [Absinthe](https://hexdocs.pm/absinthe) is included for the GraphQL API.
-- [Tesla](https://hexdocs.pm/tesla) is included for the REST API.
-- [ExUnit](https://hexdocs.pm/ex_unit) is also set up with some scaffolding in place. You must fill this in with your own tests.
+## API
 
-## Expected API
-
-The way it should work is as follows:
-
-- a user sends the GrapQL query to the server (Absinthe)
-- the server send the request to the REST API from Dark Sky (Tesla)
-- the server responds to the user with the data from DarkSky in the GrapQL format 
-
-You can go ahead and create your own API key on  https://darksky.net/dev (it’s free)
-
-An example query and input can be found below. Think carefully of what type a field could be.
+An example query and input can be found below.
 
 > Amsterdam: 52.3667° N, 4.8945° E
 
