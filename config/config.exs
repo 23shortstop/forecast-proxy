@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :assignment,
-  ecto_repos: [Assignment.Repo]
+config :forecast_proxy,
+  ecto_repos: [ForecastProxy.Repo]
 
 # Configures the endpoint
-config :assignment, AssignmentWeb.Endpoint,
+config :forecast_proxy, ForecastProxyWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "Zz/FULFiQGAElmPpxiMqNWLjCVQ+oVbOGmVaLj2BrL4l0eJ91UnCrfoGwHsBBO6u",
-  render_errors: [view: AssignmentWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: Assignment.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: ForecastProxyWeb.ErrorView, accepts: ~w(json)],
+  pubsub: [name: ForecastProxy.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -29,4 +29,4 @@ config :phoenix, :json_library, Jason
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
 
-config :assignment, dark_sky_url: "https://api.darksky.net/forecast"
+config :forecast_proxy, dark_sky_url: "https://api.darksky.net/forecast"

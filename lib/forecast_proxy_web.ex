@@ -1,12 +1,12 @@
-defmodule AssignmentWeb do
+defmodule ForecastProxyWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use AssignmentWeb, :controller
-      use AssignmentWeb, :view
+      use ForecastProxyWeb, :controller
+      use ForecastProxyWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,26 +19,26 @@ defmodule AssignmentWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: AssignmentWeb
+      use Phoenix.Controller, namespace: ForecastProxyWeb
 
       import Plug.Conn
-      import AssignmentWeb.Gettext
-      alias AssignmentWeb.Router.Helpers, as: Routes
+      import ForecastProxyWeb.Gettext
+      alias ForecastProxyWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/assignment_web/templates",
-        namespace: AssignmentWeb
+        root: "lib/forecast_proxy_web/templates",
+        namespace: ForecastProxyWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
 
-      import AssignmentWeb.ErrorHelpers
-      import AssignmentWeb.Gettext
-      alias AssignmentWeb.Router.Helpers, as: Routes
+      import ForecastProxyWeb.ErrorHelpers
+      import ForecastProxyWeb.Gettext
+      alias ForecastProxyWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -53,7 +53,7 @@ defmodule AssignmentWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import AssignmentWeb.Gettext
+      import ForecastProxyWeb.Gettext
     end
   end
 

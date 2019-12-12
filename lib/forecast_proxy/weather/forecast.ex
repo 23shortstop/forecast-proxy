@@ -1,5 +1,5 @@
-defmodule Assignment.Weather.Forecast do
-  alias Assignment.DarkSky
+defmodule ForecastProxy.Weather.Forecast do
+  alias ForecastProxy.DarkSky
 
   @currently_and_daily_query [exclude: "[minutely,hourly,alerts,flags]"]
 

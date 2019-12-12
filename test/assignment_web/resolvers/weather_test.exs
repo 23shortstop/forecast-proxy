@@ -1,5 +1,5 @@
-defmodule AssignmentWeb.Resolvers.WeatherTest do
-  use AssignmentWeb.ConnCase, async: false
+defmodule ForecastProxyWeb.Resolvers.WeatherTest do
+  use ForecastProxyWeb.ConnCase, async: false
 
   @input %{latitude: "52.3667", longitude: "4.8945"}
   @error_input %{latitude: "99999999", longitude: "99999999"}

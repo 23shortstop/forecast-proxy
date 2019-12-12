@@ -1,4 +1,4 @@
-# Assignment
+# ForecastProxy
 
 We're looking to add weather information for sales prediction and dynamic pricing.
 

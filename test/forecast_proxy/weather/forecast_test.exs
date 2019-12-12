@@ -1,6 +1,6 @@
-defmodule Assignment.Weather.ForecastTest do
-  use AssignmentWeb.ConnCase, async: true
-  alias Assignment.Weather.Forecast
+defmodule ForecastProxy.Weather.ForecastTest do
+  use ForecastProxyWeb.ConnCase, async: true
+  alias ForecastProxy.Weather.Forecast
 
   @coordinates {"1", "1"}
 

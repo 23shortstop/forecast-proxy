@@ -1,16 +1,16 @@
 use Mix.Config
 
 # Configure your database
-config :assignment, Assignment.Repo,
+config :forecast_proxy, ForecastProxy.Repo,
   username: "postgres",
   password: "postgres",
-  database: "assignment_test",
+  database: "forecast_proxy_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :assignment, AssignmentWeb.Endpoint,
+config :forecast_proxy, ForecastProxyWeb.Endpoint,
   http: [port: 4002],
   server: false
 
@@ -19,6 +19,6 @@ config :logger, level: :warn
 
 config :tesla, adapter: Tesla.Mock
 
-config :assignment,
+config :forecast_proxy,
   dark_sky_key: "test_key",
   caching_time: 1000
