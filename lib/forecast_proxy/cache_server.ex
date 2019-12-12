@@ -1,9 +1,9 @@
-defmodule Assignment.CacheServer do
+defmodule ForecastProxy.CacheServer do
   use GenServer
 
-  alias Assignment.Weather.Forecast
+  alias ForecastProxy.Weather.Forecast
 
-  @caching_time Application.fetch_env!(:assignment, :caching_time)
+  @caching_time Application.fetch_env!(:forecast_proxy, :caching_time)
 
   def start_link(_) do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)

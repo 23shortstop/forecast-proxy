@@ -1,10 +1,10 @@
-defmodule AssignmentWeb.Schema do
+defmodule ForecastProxyWeb.Schema do
   use Absinthe.Schema
 
   import_types(Absinthe.Type.Custom)
-  import_types(AssignmentWeb.Schema.WeatherTypes)
+  import_types(ForecastProxyWeb.Schema.WeatherTypes)
 
-  alias AssignmentWeb.Resolvers
+  alias ForecastProxyWeb.Resolvers
 
   query do
     @desc "Get weather forecast"

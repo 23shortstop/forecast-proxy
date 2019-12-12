@@ -1,4 +1,4 @@
-defmodule AssignmentWeb.ChannelCase do
+defmodule ForecastProxyWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule AssignmentWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint AssignmentWeb.Endpoint
+      @endpoint ForecastProxyWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Assignment.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ForecastProxy.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Assignment.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(ForecastProxy.Repo, {:shared, self()})
     end
 
     :ok

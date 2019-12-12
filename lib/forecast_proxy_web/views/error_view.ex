@@ -1,5 +1,5 @@
-defmodule AssignmentWeb.ErrorView do
-  use AssignmentWeb, :view
+defmodule ForecastProxyWeb.ErrorView do
+  use ForecastProxyWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

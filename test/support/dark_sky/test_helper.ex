@@ -1,4 +1,4 @@
-defmodule Assignment.DarkSky.TestHelper do
+defmodule ForecastProxy.DarkSky.TestHelper do
   def dark_sky_success_mock(_) do
     mock_body =
       File.read!("test/support/dark_sky/fixtures/success_body.json")

@@ -1,4 +1,4 @@
-defmodule AssignmentWeb.Schema.WeatherTypes do
+defmodule ForecastProxyWeb.Schema.WeatherTypes do
   use Absinthe.Schema.Notation
 
   object :forecast do

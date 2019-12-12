@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :assignment, Assignment.Repo,
+config :forecast_proxy, ForecastProxy.Repo,
   username: "postgres",
   password: "postgres",
-  database: "assignment_dev",
+  database: "forecast_proxy_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :assignment, Assignment.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :assignment, AssignmentWeb.Endpoint,
+config :forecast_proxy, ForecastProxyWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -56,6 +56,6 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
-config :assignment,
+config :forecast_proxy,
   dark_sky_key: System.get_env("DARK_SKY_KEY"),
   caching_time: 60 * 1000

@@ -1,9 +1,9 @@
-defmodule Assignment.DarkSky.ClientTest do
+defmodule ForecastProxy.DarkSky.ClientTest do
   use ExUnit.Case
-  alias Assignment.DarkSky.Client
+  alias ForecastProxy.DarkSky.Client
 
-  @test_base_url Application.fetch_env!(:assignment, :dark_sky_url)
-  @test_key Application.fetch_env!(:assignment, :dark_sky_key)
+  @test_base_url Application.fetch_env!(:forecast_proxy, :dark_sky_url)
+  @test_key Application.fetch_env!(:forecast_proxy, :dark_sky_key)
   @latitude "52.3667"
   @longitude "4.8945"
   @query [exclude: "[hourly]"]

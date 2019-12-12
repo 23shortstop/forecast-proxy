@@ -1,5 +1,5 @@
-defmodule AssignmentWeb.Router do
-  use AssignmentWeb, :router
+defmodule ForecastProxyWeb.Router do
+  use ForecastProxyWeb, :router
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -9,7 +9,7 @@ defmodule AssignmentWeb.Router do
     pipe_through :api
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: AssignmentWeb.Schema,
+      schema: ForecastProxyWeb.Schema,
       interface: :playground
   end
 end

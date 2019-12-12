@@ -1,4 +1,4 @@
-defmodule Assignment.DataCase do
+defmodule ForecastProxy.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule Assignment.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use AssignmentWeb.DataCase, async: true`, although
+  by setting `use ForecastProxyWeb.DataCase, async: true`, although
   this option is not recommendded for other databases.
   """
 
@@ -18,20 +18,20 @@ defmodule Assignment.DataCase do
 
   using do
     quote do
-      alias Assignment.Repo
+      alias ForecastProxy.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Assignment.DataCase
+      import ForecastProxy.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Assignment.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ForecastProxy.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Assignment.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(ForecastProxy.Repo, {:shared, self()})
     end
 
     :ok

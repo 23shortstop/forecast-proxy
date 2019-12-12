@@ -1,7 +1,7 @@
-defmodule AssignmentWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :assignment
+defmodule ForecastProxyWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :forecast_proxy
 
-  socket "/socket", AssignmentWeb.UserSocket,
+  socket "/socket", ForecastProxyWeb.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -11,7 +11,7 @@ defmodule AssignmentWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :assignment,
+    from: :forecast_proxy,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
@@ -37,8 +37,8 @@ defmodule AssignmentWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_assignment_key",
+    key: "_forecast_proxy_key",
     signing_salt: "0M7yFcUi"
 
-  plug AssignmentWeb.Router
+  plug ForecastProxyWeb.Router
 end

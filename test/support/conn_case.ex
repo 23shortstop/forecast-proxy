@@ -1,4 +1,4 @@
-defmodule AssignmentWeb.ConnCase do
+defmodule ForecastProxyWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule AssignmentWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use AssignmentWeb.ConnCase, async: true`, although
+  by setting `use ForecastProxyWeb.ConnCase, async: true`, although
   this option is not recommendded for other databases.
   """
 
@@ -21,19 +21,19 @@ defmodule AssignmentWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias AssignmentWeb.Router.Helpers, as: Routes
-      import Assignment.DarkSky.TestHelper
+      alias ForecastProxyWeb.Router.Helpers, as: Routes
+      import ForecastProxy.DarkSky.TestHelper
 
       # The default endpoint for testing
-      @endpoint AssignmentWeb.Endpoint
+      @endpoint ForecastProxyWeb.Endpoint
     end
   end
 
   setup _tags do
-    # :ok = Ecto.Adapters.SQL.Sandbox.checkout(Assignment.Repo)
+    # :ok = Ecto.Adapters.SQL.Sandbox.checkout(ForecastProxy.Repo)
 
     # unless tags[:async] do
-    #  Ecto.Adapters.SQL.Sandbox.mode(Assignment.Repo, {:shared, self()})
+    #  Ecto.Adapters.SQL.Sandbox.mode(ForecastProxy.Repo, {:shared, self()})
     # end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

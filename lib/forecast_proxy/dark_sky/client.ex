@@ -1,4 +1,4 @@
-defmodule Assignment.DarkSky.Client do
+defmodule ForecastProxy.DarkSky.Client do
   use Tesla
 
   @type coordinates :: {Decimal.t(), Decimal.t()}
@@ -11,8 +11,8 @@ defmodule Assignment.DarkSky.Client do
   @type body :: %{required(String.t()) => any}
   @type result :: {:ok, body} | {:error, String.t()}
 
-  @key Application.fetch_env!(:assignment, :dark_sky_key)
-  @base_url Application.fetch_env!(:assignment, :dark_sky_url)
+  @key Application.fetch_env!(:forecast_proxy, :dark_sky_key)
+  @base_url Application.fetch_env!(:forecast_proxy, :dark_sky_url)
 
   plug Tesla.Middleware.BaseUrl, @base_url <> "/" <> @key <> "/"
   plug Tesla.Middleware.DecodeJson

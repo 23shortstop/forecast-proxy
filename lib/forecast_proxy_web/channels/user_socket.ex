@@ -1,8 +1,8 @@
-defmodule AssignmentWeb.UserSocket do
+defmodule ForecastProxyWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", AssignmentWeb.RoomChannel
+  # channel "room:*", ForecastProxyWeb.RoomChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
@@ -26,7 +26,7 @@ defmodule AssignmentWeb.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     AssignmentWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
+  #     ForecastProxyWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil
