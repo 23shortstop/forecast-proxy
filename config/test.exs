@@ -1,13 +1,5 @@
 use Mix.Config
 
-# Configure your database
-config :forecast_proxy, ForecastProxy.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "forecast_proxy_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
-
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :forecast_proxy, ForecastProxyWeb.Endpoint,
