@@ -7,9 +7,6 @@
 # General application configuration
 use Mix.Config
 
-config :forecast_proxy,
-  ecto_repos: [ForecastProxy.Repo]
-
 # Configures the endpoint
 config :forecast_proxy, ForecastProxyWeb.Endpoint,
   url: [host: "localhost"],
