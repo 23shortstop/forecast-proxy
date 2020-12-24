@@ -23,15 +23,7 @@ defmodule ForecastProxy.DarkSky.Client do
     |> process_response
   end
 
-  defp process_response({:ok, %{body: body, status: 200}}) do
-    {:ok, body}
-  end
-
-  defp process_response({:ok, %{body: %{"error" => error}}}) do
-    {:error, error}
-  end
-
-  defp process_response(_error) do
-    {:error, "Unable to receive forecast"}
-  end
+  defp process_response({:ok, %{body: body, status: 200}}), do: {:ok, body}
+  defp process_response({:ok, %{body: %{"error" => error}}}), do: {:error, error}
+  defp process_response(_error), do: {:error, "Unable to receive forecast"}
 end

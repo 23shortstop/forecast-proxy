@@ -53,7 +53,3 @@ config :logger, level: :info
 # Finally import the config/prod.secret.exs which loads secrets
 # and configuration from environment variables.
 import_config "prod.secret.exs"
-
-config :forecast_proxy,
-  dark_sky_key: System.get_env("DARK_SKY_KEY"),
-  caching_time: 60 * 60 * 1000

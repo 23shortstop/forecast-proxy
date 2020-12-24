@@ -55,7 +55,3 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-
-config :forecast_proxy,
-  dark_sky_key: System.get_env("DARK_SKY_KEY"),
-  caching_time: 60 * 1000

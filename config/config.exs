@@ -25,8 +25,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :forecast_proxy,
+  dark_sky_url: "https://api.darksky.net/forecast",
+  dark_sky_key: System.get_env("DARK_SKY_KEY"),
+  caching_time: 60 * 1000
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
-
-config :forecast_proxy, dark_sky_url: "https://api.darksky.net/forecast"
