@@ -53,3 +53,8 @@ query WeatherForecast($input: CoordinateInput!) {
   }
 }
 ```
+
+![Screenshot](assets/static/images/screenshot.png?raw=true)
+
+## Live staging is available here:
+https://portfolio-performance.herokuapp.com/graphiql
